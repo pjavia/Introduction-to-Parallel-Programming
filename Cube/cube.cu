@@ -30,6 +30,12 @@ int main(int argc, char ** argv) {
 
     // launch the kernel
     cube<<<1, ARRAY_SIZE>>>(d_out, d_in);
+    // What does the above code line mean?
+    // Number of blocks = 1
+    // Number of threads per block = ARRAY_SIZE = 64
+    // Things to know:
+    // 1. Can run many blocks at once ?
+    // 2. How many threads per block is allowed [older GPU - 512] [new GPU - 1024]
 
     // copy back the result array to the CPU
     cudaMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpyDeviceToHost);
