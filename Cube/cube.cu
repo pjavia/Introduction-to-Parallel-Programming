@@ -29,6 +29,7 @@ int main(int argc, char ** argv) {
     cudaMemcpy(d_in, h_in, ARRAY_BYTES, cudaMemcpyHostToDevice);
 
     // launch the kernel
+    // kernel<<Grid of Blocks, Block of Threads>> dim3(x, y, z)
     cube<<<1, ARRAY_SIZE>>>(d_out, d_in);
     // What does the above code line mean?
     // Number of blocks = 1
